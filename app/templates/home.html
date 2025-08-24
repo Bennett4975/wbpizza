@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Home - Bennett's Pizza</title>
+{% endblock %}
+
+{% block content %}
+<div class="card mx-auto shadow p-4" style="max-width: 500px;">
+{% if customer.name != "" %}
+    <h1 class="text-center">Welcome back, {{ customer.name }}! </h1>
+{% endif %}
+{% if customer.name == "" %}
+    <h1 class="text-center">Welcome!</h1>
+{% endif %}
+
+    <a href="{% url 'pizza' %}">
+        <button class="btn btn-primary w-100">New Order</button>
+    </a>
+</div>
+{% if orders|length != 0 %}
+<div class="card mx-auto shadow p-4" style="max-width: 500px;">
+    <h2>Previous Orders:</h2>
+    {% for order in orders %}
+    <h3>Order Details:</h3>
+        <h5>Pizza</h5>
+        <h6>Size: {{order.pizza.size}}</h6>
+        <h6>Crust: {{order.pizza.crust}}</h6>
+        <h6>Sauce: {{order.pizza.sauce}}</h6>
+        <h6>Cheese: {{order.pizza.cheese}}</h6>
+        <h5>Toppings</h5>
+        {% if  order.pizza.pepperoni == True %}
+            <h6>Pepperoni</h6>
+        {% endif %}
+        {% if  order.pizza.chicken == True %}
+            <h6>Chicken</h6>
+        {% endif %}
+        {% if order.pizza.ham == True %}
+            <h6>Ham</h6>
+        {% endif %}
+        {% if  order.pizza.pineapple == True %}
+            <h6>Pineapple</h6>
+        {% endif %}
+        {% if  order.pizza.peppers == True %}
+            <h6>Peppers</h6>
+        {% endif %}
+        {% if  order.pizza.mushrooms == True %}
+            <h6>Mushroooms</h6>
+        {% endif %}
+        {% if  order.pizza.onions == True %}
+            <h6>Onions</h6>
+        {% endif %}
+        <h5>Ordered on {{order.time}}</h5>
+        <h5>by {{order.name}}</h5>
+    {% endfor %}
+
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Create Pizza - Bennett's Pizza</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Create Your Pizza</h1>
+<div class="card mx-auto shadow p-4" style="max-width: 500px;">
+    <h3 class="text-center">Base</h3>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h4>Size:</h4>
+        <div class="w-100">{{ form.size }}</div>
+        <h4>Crust:</h4>
+        <div class="w-100">{{ form.crust }}</div>
+        <h4>Sauce:</h4>
+        <div class="w-100">{{ form.sauce }}</div>
+        <h4>Cheese:</h4>
+        <div class="w-50">{{ form.cheese }}</div>
+        <br></br>
+        <h4 class="text-center">Toppings:</h4>
+        <div>Pepperoni {{ form.pepperoni }}</div>
+        <div>Chicken {{ form.chicken }}</div>
+        <div>Ham {{ form.ham }}</div>
+        <div>Pineapple {{ form.pineapple }}</div>
+        <div>Peppers {{ form.peppers }}</div>
+        <div>Mushrooms {{ form.mushrooms }}</div>
+        <div>Onions {{ form.onions }}</div>
+        <button type="submit" class="btn btn-primary w-100">Create Pizza</button>
+    </form>
+{% endblock %}

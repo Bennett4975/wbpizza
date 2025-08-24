@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Bennett's Pizza - Order Confirmed</title>
+{% endblock %}
+
+{% block content %}
+<div class="card mx-auto shadow p-4" style="max-width: 500px;">
+    <h2>Your Order is Confirmed!</h2>
+    <h3>Thank you, {{customer.name}}.</h3>
+    <h4>Will arrive to:</h4>
+    <h5>{{order.address}}</h5>
+    <h5>on {{order.time}} (approx 45 minutes)</h5>
+    <h5>Paid for with card ending in {{order.card_number|slice:"-4:"}}</h5>
+    <h3>Order Details:</h3>
+        <h5>Pizza</h5>
+        <h6>Size: {{pizza.size.name}}</h6>
+        <h6>Crust: {{pizza.crust}}</h6>
+        <h6>Sauce: {{pizza.sauce.name}}</h6>
+        <h6>Cheese: {{pizza.cheese.name}}</h6>
+        <h5>Toppings</h5>
+        {% if  pizza.pepperoni == True %}
+            <h6>Pepperoni</h6>
+        {% endif %}
+        {% if  pizza.chicken == True %}
+            <h6>Chicken</h6>
+        {% endif %}
+        {% if pizza.ham == True %}
+            <h6>Ham</h6>
+        {% endif %}
+        {% if  pizza.pineapple == True %}
+            <h6>Pineapple</h6>
+        {% endif %}
+        {% if  pizza.peppers == True %}
+            <h6>Peppers</h6>
+        {% endif %}
+        {% if  pizza.mushrooms == True %}
+            <h6>Mushroooms</h6>
+        {% endif %}
+        {% if  pizza.onions == True %}
+            <h6>Onions</h6>
+        {% endif %}
+        <h5>Ordered by {{customer.username}}</h5>
+        <a href="{% url 'home' %}">
+            <button class="btn btn-primary w-100">Return Home</button>
+        </a>
+</div>
+{% endblock %}

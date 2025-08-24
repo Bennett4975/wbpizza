@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+    <div class="card mx-auto shadow p-4" style="max-width: 500px;">
+    <form action="" method="POST">
+        <h3>Delivery Details</h3>
+        {% csrf_token %}
+        {{ form.as_table }}
+        <br></br>
+        <button type="submit" class="btn btn-primary w-100">Order</button>
+        </form>
+    </div>
+
+{% endblock %}
